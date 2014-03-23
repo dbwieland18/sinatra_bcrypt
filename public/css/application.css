@@ -8,16 +8,12 @@ th {
   text-align: left;
 }
 
-h1 {
+h1, h2 {
 	text-align: center
 }
 
-li {
-	display: block;
-	list-style: none;
+#errors {
+  color: red;
 }
 
-ul {
-	padding: 0;
-	list-style: none;
-}
+
