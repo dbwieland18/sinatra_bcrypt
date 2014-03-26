@@ -6,14 +6,12 @@ end
 
 post '/sessions' do
   @user = User.find_by_name(params[:name])
-  if @user.nil? || @user.authenticate(params[:password]) == false
-    @error = "something went wrong"
+  if @user.nil? || @user.password != params[:password]
+    @error = "something went wrong, do you need to <a href='/users/new'>create an account?</a>"
     return erb :"/sessions/new"
   end
-  # p @user
-  if @user.authenticate(params[:password])
+  if @user.password == params[:password]
     session[:user_id] = @user.id
-    p session[:user_id]
     erb :index
   end
 end 
